@@ -13,33 +13,25 @@ import javax.servlet.http.HttpServletResponse;
 
 /*HERENCIA*/
 //Create Controller es hijo de :
-@WebServlet("/CreateController")
-public class CreateController extends HttpServlet {
+@WebServlet("/api/EliminarController")
+public class EliminarController extends HttpServlet {
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// recibe los datos del front
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		// en req viene los datos que manda el formulario html
-		//clave=valor
 			
-		String nombre = req.getParameter("nombre");//titulo1
-		String precio = req.getParameter("precio");//1500
-		String fechaCreacion = "";//damos nostros
-		String imagen = req.getParameter("imagen");
-		String codigo = req.getParameter("codigo");//0001
+		String id = req.getParameter("id");
 		
 		// pedir una Conexion: AdministradorDeConexion.getConection()
 		Connection con = AdministradorDeConexiones.getConnection();
 		if(con != null) { 
-			// insert en la db > SQL: INSERT INTO....
-			String sql = "INSERT INTO PRODUCTO (nombre, precio,fecha_creacion,imagen,codigo) ";
-			sql += "VALUES('"+nombre+"',"+precio+",CURRENT_DATE,'"+imagen+"','"+codigo+"')";
+			// delete
+			String sql = "DELETE FROM PRODUCTO WHERE id="+id;
 			
-			//control de errores
+			
 			try {
 				Statement st = con.createStatement();			
-				st.execute(sql);
+				st.executeUpdate(sql);
 				
 				//cierre de conexion
 				con.close();
