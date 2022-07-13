@@ -38,8 +38,10 @@
 					      <td><%=unProducto.getNombre() %></td>
 					      <td><%=unProducto.getPrecio() %></td>
 					      <td><%=unProducto.getCodigo() %></td>
-					      <td><a class="btn btn-danger" href="<%=request.getContextPath() %>/api/EliminarController?id=<%=unProducto.getIdProducto()%>" role="button">Eliminar</a> | 
-							<a class="btn btn-secondary" href="#" role="button">Editar</a></td>
+					      <td>
+					      	<a class="btn btn-danger" href="<%=request.getContextPath()%>/api/EliminarController?id=<%=unProducto.getIdProducto()%>" role="button">Eliminar</a> | 
+					      	<a class="btn btn-secondary" href="<%=request.getContextPath()%>/api/EditarController?id=<%=unProducto.getIdProducto()%>" role="button">Editar</a>
+					      </td>
 					    </tr>
 					   <%
 					   	}
