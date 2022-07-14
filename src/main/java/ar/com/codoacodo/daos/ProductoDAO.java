@@ -53,7 +53,7 @@ public class ProductoDAO {
 
 	/*metodos del crud*/
 	public List<Producto> listarProductos() {
-		String sql = "SELECT * FROM PRODUCTO ";
+		String sql = "SELECT * FROM producto ";
 		
 		//Connection
 		Connection con = AdministradorDeConexiones.getConnection();
