@@ -36,7 +36,7 @@ public class ConsultarController extends HttpServlet {
 			//resultset
 			ResultSet rs = st.executeQuery(sql);
 			
-			if(rs.next()) {//¿hay datos?
+			if(rs.next()) {//hay datos?
 				// rs > sacando los datos
 				Long idProducto = rs.getLong(1);//tomar la primer columna
 				String nombre = rs.getString(2);
