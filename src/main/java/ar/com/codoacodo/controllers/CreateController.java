@@ -17,27 +17,20 @@ public class CreateController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// recibe los datos del front
-		
-		// en req viene los datos que manda el formulario html
-		//clave=valor
-			
-		String nombre = req.getParameter("nombre");//titulo1
-		String precio = req.getParameter("precio");//1500
+
+		String nombre = req.getParameter("nombre");
+		String precio = req.getParameter("precio");
 		String imagen = req.getParameter("imagen");
-		String codigo = req.getParameter("codigo");//0001
+		String codigo = req.getParameter("codigo");
 		
-		//ctrl+shift+o es para que desaparezcan las clases que no sirven y quedan solo las que uso
-		//crear productoDAO
+		//crear ProductoDAO
 		ProductoDAO dao = new ProductoDAO();
 		
+		//ejecutar el metodo crearProducto(parametros...)
+		dao.crearProducto(nombre, Float.parseFloat(precio), imagen, codigo);
 		
-		//ejecutar el metodo crearProducto(conlosparametros)
-		dao.crearProducto(nombre, Float.parseFloat(precio), imagen, codigo); 
-		/*al poner crea ya lo completa solo apretando enter, como precio no es un string, convierto en un parse*/
-		
-		//ir a la siguiente pagina, un redirect
-		
+		//ctrl+shit+o
+		//ir a la siguiente pagina
 		resp.sendRedirect(req.getContextPath()+"/api/ListadoController");
 	}
 }
